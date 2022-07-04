@@ -32,6 +32,14 @@ kafka-console-consumer --bootstrap-server localhost:9092 --from-beginning --prop
 kafka-configs --bootstrap-server localhost:9092 --alter  --topic <TOPIC> --add-config <CONFIG>=<VALUE>
 ```
 
+*Purge a topic*
+```
+kafka-topics --bootstrap-server localhost:9092 --alter --topic <TOPIC> --config retention.ms=1000
+kafka-topics --bootstrap-server localhost:9092 --alter --topic <TOPIC> --config segment.ms=15000
+#Wait for 30 second ...
+kafka-topics --bootstrap-server localhost:9092 --alter --topic <TOPIC> --delete-config retention.ms
+kafka-topics --bootstrap-server localhost:9092 --alter --topic <TOPIC> --delete-config segment.ms
+```
 
 ## Zookeeper
 *Open Zookeeper shell*
